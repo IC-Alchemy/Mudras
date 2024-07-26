@@ -1,0 +1,5 @@
+{
+    "sketch": "AAABlackPCBOpenSource.ino",
+    "configuration": "pnum=AGAFIA_SG0,upload_method=swdMethod,xserial=generic,usb=none,opt=osstd,dbg=none,rtlib=nano",
+    "board": "STMicroelectronics:stm32:GenG0"
+}
