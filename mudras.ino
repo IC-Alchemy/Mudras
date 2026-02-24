@@ -69,23 +69,23 @@ int scale[7][24] = {
     // Like major but with flatted 7th - common in blues/rock
     {0, 2, 4, 5, 7, 9, 10, 12, 14, 16, 17, 19, 21, 22, 24, 26, 28, 29, 31, 33, 34, 36, 36, 36},
 
-    // Scale 3: Minor Pentatonic (doubled notes for easier playing)
+    // Scale 2: Minor Pentatonic (doubled notes for easier playing)
     // 5-note scale, each note appears twice for more forgiving hand positioning
     {0, 0, 3, 3, 5, 5, 7, 7, 10, 10, 12, 12, 15, 15, 17, 17, 19, 19, 22, 22, 24, 24, 27, 29},
 
-    // Scale 4: Harmonic Minor (W-H-W-W-H--H pattern)
+    // Scale 3: Harmonic Minor (W-H-W-W-H-WH-H pattern)
     // Intervals: Root, Maj2, min3, P4, P5, min6, Maj7, Octave...
     {0, 2, 3, 5, 7, 8, 11, 12, 14, 15, 17, 19, 20, 23, 24, 26, 27, 29, 31, 32, 35, 36, 36, 36},
 
-    // Scale 5: Diminished (H-W-H-W-H-W pattern)
+    // Scale 4: Diminished (H-W-H-W-H-W pattern)
     // Intervals: Root, Maj2, min3, P4, P5, min6, min7, Octave...
     {0, 2, 3, 5, 7, 8, 10, 12, 14, 15, 17, 19, 20, 22, 24, 26, 27, 29, 31, 32, 34, 36, 36, 36},
 
-    // Scale 6: Whole Tone scale (all whole steps)
+    // Scale 6: Whole Tone scale (W-W-W-W-W-W-W all whole steps)
     // Creates dreamy, ambiguous tonality - 6 notes per octave
     {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 38, 38, 38, 38},
 
-    // Scale 6: Chromatic (all 12 semitones)
+    // Scale 6: Chromatic (H-H-H-H-H-H-H-H-H-H all half steps)
     // Every note in the octave - no scale quantization
     {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23}};
 
