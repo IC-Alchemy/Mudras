@@ -81,7 +81,7 @@ int scale[7][24] = {
     // Intervals: Root, Maj2, min3, P4, P5, min6, min7, Octave...
     {0, 2, 3, 5, 7, 8, 10, 12, 14, 15, 17, 19, 20, 22, 24, 26, 27, 29, 31, 32, 34, 36, 36, 36},
 
-    // Scale 6: Whole Tone scale (W-W-W-W-W-W-W all whole steps)
+    // Scale 5: Whole Tone scale (W-W-W-W-W-W-W all whole steps)
     // Creates dreamy, ambiguous tonality - 6 notes per octave
     {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 38, 38, 38, 38},
 
