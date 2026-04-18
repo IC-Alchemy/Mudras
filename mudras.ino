@@ -38,7 +38,7 @@ Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 
 // INTERRUPT SYSTEM: Flag set by gate ISR, processed in main loop
 // volatile = can be modified by interrupt, prevents compiler optimization issues
-volatile bool poo = false; // True when gate trigger received on D5
+volatile bool gateFlag = false; // True when gate trigger received on D5
 
 #include <ResponsiveAnalogRead.h>
 #define RESOLUTION_12_BIT 4096 // 12-bit DAC resolution (0-4095)
@@ -136,7 +136,6 @@ uint32_t volts_to_DAC(float volts, uint32_t resolution = RESOLUTION_12_BIT, floa
  *   MIDI 0  (C-1)  → 0.00V
  *   MIDI 12 (C0)   → 1.00V
  *   MIDI 24 (C1)   → 2.00V
- *   MIDI 60 (C4)   → 5.00V (middle C)
  *
  * Note: This function outputs voltage, not DAC values
  *       Use volts_to_DAC() to convert the result for PA4 output
@@ -155,9 +154,9 @@ float midi_note_to_volts(uint32_t midi_note)
  * 1. External clock/sequencer sends gate signal to either clock input
  * 2. The signal is inverted by a transistor and converted to 3.3V logic and sent to pin D5
  * 2. When D5 goes HIGH→LOW (falling edge), this ISR fires immediately
- * 3. ISR sets 'poo' flag to true (volatile ensures visibility to main loop)
+ * 3. ISR sets 'gateFlag' flag to true (volatile ensures visibility to main loop)
  * 4. ISR exits quickly (critical for interrupt safety)
- * 5. Main loop detects 'poo' flag and advances sequence step
+ * 5. Main loop detects 'gateFlag' flag and advances sequence step
  *
  * WHY THIS DESIGN:
  * - ISR kept minimal (just set flag) to avoid timing issues
@@ -170,7 +169,7 @@ float midi_note_to_volts(uint32_t midi_note)
  */
 void gate()
 {
-  poo = true; // Signal main loop that a gate trigger was received
+  gateFlag = true; // Signal main loop that a gate trigger was received
 }
 
 /*
@@ -432,9 +431,9 @@ void loop()
 
   // GATE TRIGGER PROCESSING:
   // Check if interrupt flag was set by gate() ISR (external trigger on D5)
-  if (poo)
+  if (gateFlag)
   {
-    poo = false; // Clear the interrupt flag
+    gateFlag = false; // Clear the interrupt flag
 
     // ADVANCE SEQUENCE STEP:
     count++; // Move to next step in sequence
